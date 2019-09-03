@@ -1,0 +1,17 @@
+<ng-container *ngIf="viewModel$ | async as viewModel">
+    <section [dynamicAttributes]="viewModel.Section.Attributes">
+        <div *ngIf="viewModel.Section.ShowVideo && viewModel.Section.VideoUrl" class="sc-video__wrapper">
+            <video class="sc-video__element" autoplay muted loop>
+                <source src="{{viewModel.Section.VideoUrl}}">
+            </video>
+        </div>
+
+        <ng-container *ngFor="let column of viewModel.Columns">
+            <div [dynamicAttributes]="column.Attributes">
+                <ng-container *ngFor="let child of column.Children" [componentWrapper]="child">
+                </ng-container>
+            </div>
+        </ng-container>
+    </section>
+</ng-container>
+
