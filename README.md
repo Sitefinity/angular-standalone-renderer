@@ -20,23 +20,132 @@ The whole renderer framework for the angular renderer is already built (includin
 
 In order to build our own custom widget, we need to first create a folder that will hold our files. We will name our widget - ‘Hello World’ and it will be placed in the ‘hello-world' folder(under src/app/components). We then create a file in that folder called ‘hello-world.component.ts’ that will host our angular component. It will have the following content: 
 
+``` typescript
+
+import { Component } from "@angular/core";
+import { BaseComponent } from "../base.component";
+import { HelloWorldEntity } from "./hello-world-entity";
+
+@Component({
+    templateUrl: "hello-world.component.html",
+    selector: "app-hello"
+})
+export class HelloWorldComponent extends BaseComponent<HelloWorldEntity> {
+
+}
+
+
+```
+
+We need to add this component to our [app.module.ts](./src/app/app.module.ts) file in both 'declarations' and 'entrycomponents'.
+Additionally add the 'app-hello' tag name to the [styles.scss](./src/styles.scss) file to make the tag a block element.
+
 ### Building the designer 
 
-Second - we need to define the designer. This is done by creating a 'designer-metadata.json file' (name does not matter) and it will hold the metadata that will be read from the widget designer in order to construct the designer.  
+Second - we need to define the designer. This is done by creating a 'designer-metadata.json file' (name does not matter) and it will hold the metadata that will be read from the widget designer in order to construct the designer.
+
+``` json
+{
+   "Name":"HelloWorld",
+   "Caption":"HelloWorld",
+   "PropertyMetadata":[
+      {
+         "Name":"Basic",
+         "Sections":[
+            {
+               "Name":"Main",
+               "Title":null,
+               "Properties":[
+                  {
+                     "Name":"Message",
+                     "DefaultValue":null,
+                     "Title":"Message",
+                     "Type":"string",
+                     "SectionName":null,
+                     "CategoryName":null,
+                     "Properties":{
+                        
+                     },
+                     "TypeChildProperties":[
+                        
+                     ],
+                     "Position":0
+                  }
+               ],
+               "CategoryName":"Basic"
+            }
+         ]
+      },
+      {
+         "Name":"Advanced",
+         "Sections":[
+            {
+               "Name":"AdvancedMain",
+               "Title":null,
+               "Properties":[
+                  
+               ],
+               "CategoryName":null
+            }
+         ]
+      }
+   ],
+   "PropertyMetadataFlat":[
+      {
+         "Name":"Message",
+         "DefaultValue":null,
+         "Title":"Message",
+         "Type":"string",
+         "SectionName":null,
+         "CategoryName":null,
+         "Properties":{
+            
+         },
+         "TypeChildProperties":[
+            
+         ],
+         "Position":0
+      }
+   ]
+}
+```
 
 ### Registration with the renderer framework
 Once we have the above two files ready, we need to register the component implementation and the designer metadata with the Angular Renderer. 
 
-For the component we need to go to the file 'render-widget-service' and to add a new entry to the TYPES_MAP object like so: 
-    "HelloWorld": HelloWorldComponent 
+For the component we need to go to the file [render-widget-service](./src/app/services/render-widget.service.ts) and to add a new entry to the TYPES_MAP object like so:
 
-For the designer we need to go to the file “renderer-contract” and in the metadataMap object to add a new entry like so: 
-    "HelloWorld": helloWorldJson 
+``` typescript
 
-Be sure to add the import like this: 
-import helloWorldJson from '../components/hello-world/designer-metadata.json'; 
+import { HelloWorldComponent } from "../components/hello-world/hello-world.component";
 
-Finally we need to register the widget to be shown in the widget selector interface. Go to the file ‘content-widgets.json’ and add a new entry after the SitefinityContentBlock registration: 
+export const TYPES_MAP: { [key: string]: Function } = {
+    "SitefinityContentBlock": ContentComponent,
+    "SitefinitySection": SectionComponent,
+    "SitefinityContentList": ContentListComponent,
+    "HelloWorld": HelloWorldComponent
+};
+
+```
+
+For the designer we need to go to the file [renderer-contract](./src/app/editor/renderer-contract.ts) and in the metadataMap object to add a new entry like so: 
+``` typescript
+
+import helloWorldJson from '../components/hello-world/designer-metadata.json';
+
+@Injectable()
+export class RendererContractImpl implements RendererContract {
+
+    private metadataMap: { [key: string]: any } = {
+        "SitefinityContentBlock": sitefinityContentBlockJson,
+        "SitefinitySection": sitefinitySectionJson,
+        "SitefinityContentList": sitefinityContentListJson,
+        "HelloWorld": helloWorldJson
+    }
+
+```
+
+Finally we need to register the widget to be shown in the widget selector interface. Go to the file [content-widgets.json](./src/app/editor/designer-metadata/content-widgets.json) and add a new entry after the SitefinityContentBlock registration: 
 
 ``` json
 { 
@@ -61,7 +170,6 @@ All of the components must inherit from the [BaseComponent class](./src/app/comp
 When the widgets are rendered in 'edit mode', the widget wrapping element is decorated with some [additional attributes](./src/app/services/render-widget.service.ts). These attributes are added only in edit mode and are not added on the live rendering. They are needed so the page editor knows which type of widget is currently being rendered.
 
 Each widget must have a wrapper tag. Having two tags side by side on root level of the html of the component is not supported.
-
 
 ### Building the designer
 
