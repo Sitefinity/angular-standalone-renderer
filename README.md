@@ -8,12 +8,12 @@ Progress® Sitefinity® CMS sample angular standalone renderer app
 The sample code in this repo implements a decoupled frontend SPA renderer for Sitefinity CMS. It uses the Sitefinity Layout API services to render the layout and widget content in Sitefinity MVC pages. This implementation also works with personalized pages and personalized widgets to enable per-user content personalization. The sample code uses the Angular framework.
 
 ## Who is this sample for
-Angular developers that wish to develop with Sitefinity CMS and the Angular framework and utilize the WYSIWYG pag editor.
+Angular developers that wish to develop with Sitefinity CMS and the Angular framework and utilize the WYSIWYG page editor.
 
 ## How does it work
 The WYSIWYG page editor of Sitefinity works with reusable components called widgets. Leveraging the power of the editor, developers can build custom SPA frontends for their users. This sample demonstrates how to integrate a custom front-end framework (such as Angular) in the page editor.
 
-The whole renderer framework for the angular renderer is already built (including integration with the WYSIWYG editor), so all there is to do is just write 'Angular widgets'. Developing widgets for the Anuglar Renderer is just like developing plain Angular Components. There are some integration points which we will go through. For this purpose find the bellow Hello World tutorial 
+The whole renderer framework for the angular renderer is already built (including integration with the WYSIWYG editor), so all there is to do is just write 'Angular widgets'. Developing widgets for the Angular Renderer is just like developing plain Angular Components. There are some integration points which we will go through. For this purpose find the bellow Hello World tutorial 
 
 ## Hello World sample
 ### Building the component 
@@ -163,7 +163,7 @@ Notice that everywhere above we are using the 'HelloWorld' name to register our 
 
 There are two deployment techniques that can be levaraged - directly in the CMS(when you have the source code) or through a proxy app such as the Sitefinity .NET Renderer. This is covered and demonstrated [here](https://github.com/Sitefinity/sitefinity-aspnetcore-mvc-samples/tree/gebov/samples-for-14.3/src/standalone-spa-renderers#developing-with-the-client-side-renderers)
 
-**NOTE** Be sure to configure the deployUrl property in [angular.json](./angular.json). Currently it is configured as '/sitefinity/public/renderers/angular' in two places. Both need to be replaced if you plan on develop with the Sitefinity .NET Renderer to '/sfrenderer/renderers/angular'
+**NOTE** Be sure to configure the deployUrl property in [angular.json](./angular.json). Currently it is configured as '/sitefinity/public/renderers/Angular' in two places. Both need to be replaced if you plan on develop with the Sitefinity .NET Renderer to '/sfrenderer/renderers/Angular'
 
 ## Deep dive
 ### Building the component
