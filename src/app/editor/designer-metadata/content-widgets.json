@@ -10,7 +10,14 @@
                     "addWidgetTitle": null,
                     "title": "Content block",
                     "initialProperties": []
-                }
+                },
+                { 
+                    "name": "SitefinityChart", 
+                    "addWidgetName": null, 
+                    "addWidgetTitle": null, 
+                    "title": "Chart", 
+                    "initialProperties": [] 
+                } 
             ]
         },
         {
