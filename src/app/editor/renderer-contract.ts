@@ -3,10 +3,10 @@ import { RenderWidgetService } from "../services/render-widget.service";
 import sitefinityContentBlockJson from '../components/content-block/designer-metadata.json'
 import sitefinitySectionJson from '../components/section/designer-metadata.json';
 import sitefinityContentListJson from '../components/content-list/designer-metadata.json';
+import sitefinityChartJson from '../components/chart/designer-metadata.json';
 
 import contentWidgetsJson from './designer-metadata/content-widgets.json';
 import layoutWidgetsJson from './designer-metadata/layout-widgets.json';
-
 
 @Injectable()
 export class RendererContractImpl implements RendererContract {
@@ -14,7 +14,8 @@ export class RendererContractImpl implements RendererContract {
     private metadataMap: { [key: string]: any } = {
         "SitefinityContentBlock": sitefinityContentBlockJson,
         "SitefinitySection": sitefinitySectionJson,
-        "SitefinityContentList": sitefinityContentListJson
+        "SitefinityContentList": sitefinityContentListJson,
+        "SitefinityChart": sitefinityChartJson
     }
 
     constructor(private renderWidgetService: RenderWidgetService) {

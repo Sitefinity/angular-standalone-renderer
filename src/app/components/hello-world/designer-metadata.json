@@ -1,0 +1,63 @@
+{
+    "Name":"HelloWorld",
+    "Caption":"HelloWorld",
+    "PropertyMetadata":[
+       {
+          "Name":"Basic",
+          "Sections":[
+             {
+                "Name":"Main",
+                "Title":null,
+                "Properties":[
+                   {
+                      "Name":"Message",
+                      "DefaultValue":null,
+                      "Title":"Message",
+                      "Type":"string",
+                      "SectionName":null,
+                      "CategoryName":null,
+                      "Properties":{
+                         
+                      },
+                      "TypeChildProperties":[
+                         
+                      ],
+                      "Position":0
+                   }
+                ],
+                "CategoryName":"Basic"
+             }
+          ]
+       },
+       {
+          "Name":"Advanced",
+          "Sections":[
+             {
+                "Name":"AdvancedMain",
+                "Title":null,
+                "Properties":[
+                   
+                ],
+                "CategoryName":null
+             }
+          ]
+       }
+    ],
+    "PropertyMetadataFlat":[
+       {
+          "Name":"Message",
+          "DefaultValue":null,
+          "Title":"Message",
+          "Type":"string",
+          "SectionName":null,
+          "CategoryName":null,
+          "Properties":{
+             
+          },
+          "TypeChildProperties":[
+             
+          ],
+          "Position":0
+       }
+    ]
+ }
