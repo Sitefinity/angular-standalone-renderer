@@ -161,7 +161,13 @@ Notice that everywhere above we are using the 'HelloWorld' name to register our 
 
 ## Deployment
 
-There are two deployment techniques that can be levaraged - directly in the CMS(when you have the source code) or through a proxy app such as the Sitefinity .NET Renderer. This is covered and demonstrated [here](https://github.com/Sitefinity/sitefinity-aspnetcore-mvc-samples/tree/master/src/standalone-spa-renderers#developing-with-the-client-side-renderers)
+In order to minimize the cost and not host two applications (as the case with the .NET Renderer), the developer can host the production files on the file system of the CMS application under the following folder template(casing is important for the renderer folder):
+
+/sitefinity/public/renderers/{rendererName}\
+/sitefinity/public/renderers/Angular\
+/sitefinity/public/renderers/React
+
+The above folders can be used for development as well. Just configure the output folder for the build. After the files are deployed, reloading a page will take into account the new files.
 
 **NOTE** Be sure to configure the deployUrl property in [angular.json](./angular.json). Currently it is configured as '/sitefinity/public/renderers/Angular' in two places. Both need to be replaced if you plan on develop with the Sitefinity .NET Renderer to '/sfrenderer/renderers/Angular'
 
