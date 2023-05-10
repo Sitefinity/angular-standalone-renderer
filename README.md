@@ -37,8 +37,31 @@ export class HelloWorldComponent extends BaseComponent<HelloWorldEntity> {
 
 ```
 
-We need to add this component to our [app.module.ts](./src/app/app.module.ts) file in both 'declarations' and 'entrycomponents'.
+**We need to add this component to our [app.module.ts](./src/app/app.module.ts) file in both 'declarations' and 'entrycomponents'.**
 Additionally add the 'app-hello' tag name to the [styles.scss](./src/styles.scss) file to make the tag a block element.
+
+### Building the entity
+Create a file called 'hello-world-entity.ts' with the following contents:
+``` typescript
+
+export class HelloWorldEntity {
+    Message!: string;
+}
+
+```
+
+**The entity class will hold the properties that are populated through our designer. We will have a single property called 'Message'. **
+
+### Building the html file
+We add a simple html file called - 'hello-world.component.html' with the following contents:
+
+``` html
+
+<h1>{{Properties.Message}}</h1>
+
+```
+
+**The data entered from the designer will be under the Properties object**
 
 ### Building the designer 
 
