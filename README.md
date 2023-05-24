@@ -1,7 +1,7 @@
 Progress® Sitefinity® CMS sample angular standalone renderer app
 ======================================================
 
-> **NOTE**: Latest supported version: Sitefinity CMS 14.2.7924.0
+> **NOTE**: Supported versions: Sitefinity CMS 14.2.7924.0 and higher
 
 ## Overview
 
