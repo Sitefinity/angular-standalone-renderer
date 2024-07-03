@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { HttpClientModule } from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { ContentComponent } from "./components/content-block/content-block.component";
 import { WrapperComponentDirective } from "./directives/component-wrapper.directive";
 import { RootUrlService } from "./services/root-url.service";
@@ -29,8 +29,7 @@ import 'hammerjs';
 
 
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         ContentComponent,
         SectionComponent,
@@ -44,13 +43,9 @@ import 'hammerjs';
         ListWithImageComponent,
         ListWithSummaryComponent,
     ],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         CommonModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-    ],
-    providers: [
+        BrowserAnimationsModule], providers: [
         RootUrlService,
         LayoutService,
         ServiceMetadata,
@@ -62,8 +57,7 @@ import 'hammerjs';
         WrapperComponentDirective,
         DynamicAttributesDirective,
         ContentListRestService,
-    ],
-    bootstrap: [AppComponent]
-})
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {
 }
