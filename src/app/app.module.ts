@@ -24,7 +24,6 @@ import { ContentListRestService } from "./components/content-list/content-list-r
 import { ListWithImageComponent } from "./components/content-list/master/list-with-image/list-with-image.component";
 import { ListWithSummaryComponent } from "./components/content-list/master/list-with-summary/list-with-summary.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import 'hammerjs';
 
 
 
