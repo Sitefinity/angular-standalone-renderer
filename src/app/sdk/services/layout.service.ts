@@ -12,7 +12,8 @@ export class LayoutService {
     }
 
     public get(pagePathAndQuery: string): Observable<PageLayoutServiceResponse> {
-        return this.http.get<PageLayoutServiceResponse>(pagePathAndQuery, { headers: { "X-SFRENDERER-PROXY": "true", "X-SF-WEBSERVICEPATH": "api/default" } });
+        let serviceUrl = `${this.rootUrlService.getServiceUrl()}/pages/Default.Model(url=@param)?@param='${encodeURIComponent(pagePathAndQuery)}'`;
+        return this.http.get<PageLayoutServiceResponse>(serviceUrl);
     }
 
     public getLazyComponents(pagePathAndQuery: string): Observable<LazyComponentsResponse> {
