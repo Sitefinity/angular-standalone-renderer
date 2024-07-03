@@ -23,10 +23,8 @@ import { CardsListComponent } from "./components/content-list/master/cards-list/
 import { ContentListRestService } from "./components/content-list/content-list-rest.service";
 import { ListWithImageComponent } from "./components/content-list/master/list-with-image/list-with-image.component";
 import { ListWithSummaryComponent } from "./components/content-list/master/list-with-summary/list-with-summary.component";
-import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
-import { ChartComponent } from "./components/chart/chart.component";
 
 
 
@@ -45,20 +43,17 @@ import { ChartComponent } from "./components/chart/chart.component";
         DynamicAttributesDirective,
         ListWithImageComponent,
         ListWithSummaryComponent,
-        ChartComponent
     ],
     entryComponents: [
         ContentComponent,
         ErrorComponent,
         SectionComponent,
         ContentListComponent,
-        ChartComponent
     ],
     imports: [
         BrowserModule,
         CommonModule,
         HttpClientModule,
-        ChartsModule,
         BrowserAnimationsModule,
     ],
     providers: [
