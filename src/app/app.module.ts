@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { HttpClientModule } from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { ContentComponent } from "./components/content-block/content-block.component";
 import { WrapperComponentDirective } from "./directives/component-wrapper.directive";
 import { RootUrlService } from "./services/root-url.service";
@@ -23,16 +23,12 @@ import { CardsListComponent } from "./components/content-list/master/cards-list/
 import { ContentListRestService } from "./components/content-list/content-list-rest.service";
 import { ListWithImageComponent } from "./components/content-list/master/list-with-image/list-with-image.component";
 import { ListWithSummaryComponent } from "./components/content-list/master/list-with-summary/list-with-summary.component";
-import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import 'hammerjs';
-import { ChartComponent } from "./components/chart/chart.component";
 
 
 
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         ContentComponent,
         SectionComponent,
@@ -45,23 +41,10 @@ import { ChartComponent } from "./components/chart/chart.component";
         DynamicAttributesDirective,
         ListWithImageComponent,
         ListWithSummaryComponent,
-        ChartComponent
     ],
-    entryComponents: [
-        ContentComponent,
-        ErrorComponent,
-        SectionComponent,
-        ContentListComponent,
-        ChartComponent
-    ],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         CommonModule,
-        HttpClientModule,
-        ChartsModule,
-        BrowserAnimationsModule,
-    ],
-    providers: [
+        BrowserAnimationsModule], providers: [
         RootUrlService,
         LayoutService,
         ServiceMetadata,
@@ -73,8 +56,7 @@ import { ChartComponent } from "./components/chart/chart.component";
         WrapperComponentDirective,
         DynamicAttributesDirective,
         ContentListRestService,
-    ],
-    bootstrap: [AppComponent]
-})
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {
 }

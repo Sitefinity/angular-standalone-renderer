@@ -9,13 +9,11 @@ import { EditorMetadata } from "../editor/editor-metadata";
 import { ModelBase } from "../models/model-base";
 import { RenderContext } from "./render-context";
 import { WidgetModel } from "../editor/renderer-contract";
-import { ChartComponent } from "../components/chart/chart.component";
 
 export const TYPES_MAP: { [key: string]: Function } = {
     "SitefinityContentBlock": ContentComponent,
     "SitefinitySection": SectionComponent,
     "SitefinityContentList": ContentListComponent,
-    "SitefinityChart": ChartComponent
 };
 
 @Injectable()
