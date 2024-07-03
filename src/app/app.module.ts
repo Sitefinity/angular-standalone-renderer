@@ -44,12 +44,6 @@ import 'hammerjs';
         ListWithImageComponent,
         ListWithSummaryComponent,
     ],
-    entryComponents: [
-        ContentComponent,
-        ErrorComponent,
-        SectionComponent,
-        ContentListComponent,
-    ],
     imports: [
         BrowserModule,
         CommonModule,
